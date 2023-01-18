@@ -1,0 +1,19 @@
+# compiled python code
+*.pyc
+
+# vim temporary backup
+.*.sw*
+
+# binary executables
+TMalign
+TMalignc
+pdb2xyz
+pdb2fasta
+pdb2ss
+xyz_sfetch
+se
+qTMclust
+NWalign
+HwRMSD
+MMalign
+TMscore

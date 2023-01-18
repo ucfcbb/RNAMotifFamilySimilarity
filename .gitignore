@@ -1,0 +1,7 @@
+*.log
+*.pyc
+*.bck
+backup/
+
+src/my_lib/DSSR/
+__pycache__/
