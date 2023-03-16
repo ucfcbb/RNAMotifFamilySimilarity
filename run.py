@@ -32,6 +32,8 @@ def main():
     process_start_time = time.time()
     parser = argparse.ArgumentParser(description='Prepare input for RNAMotifContrast')
     parser.add_argument('-i', required=True, help='Input file containing motifs')
+    parser.add_argument('-r', nargs='?', default=1.0, const=1.0, help='RMSD threshold to consider as similar')
+    parser.add_argument('-p', nargs='?', default=20.0, const=20.0, help='Percentage of participating motif instances threshold')
     parser.add_argument('-t', nargs='?', default='ScanX', const='ScanX', help='Input file containing motifs')
 
     try:
@@ -41,6 +43,8 @@ def main():
         sys.exit()
 
     user_input_fname = args.i
+    rmsd_threshold = float(args.r)
+    participating_motif_instance_threshold = float(args.p)
     
     global alignment_tool
     alignment_tool = args.t
@@ -171,7 +175,7 @@ def main():
     # print(len(rmsd_data_dict['Tandem-shear'][1][ky][1]))
 
     # sys.exit()
-    generate_relative_graph_among_motif_families(families, loop_node_list_str, alignment_data, rmsd_data_dict, user_input_fname, alignment_tool, alignment_dir, graphs_and_pickles_dir, partial_pdbx_dir, output_dir)
+    generate_relative_graph_among_motif_families(families, loop_node_list_str, alignment_data, rmsd_data_dict, user_input_fname, alignment_tool, alignment_dir, graphs_and_pickles_dir, partial_pdbx_dir, output_dir, rmsd_threshold, participating_motif_instance_threshold)
 
     logger.info('\nTotal time taken: ' + str(round((time.time() - process_start_time), 3)) + ' seconds.\n')
         

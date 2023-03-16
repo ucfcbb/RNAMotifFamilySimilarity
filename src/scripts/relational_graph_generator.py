@@ -728,7 +728,7 @@ def find_avg_rmsd_of_all_filtered_pairs(filtered_pair_list):
 
     return sum_rmsd/float(len(filtered_pair_list)), sum_aln_len/float(len(filtered_pair_list))
 
-def generate_relative_graph_among_motif_families(families, loop_list, familywise_alignment_data, familywise_rmsd_data_dict, input_fname_base, alignment_tool, alignment_dir, graphs_and_pickles_dir, partial_pdbx_dir, output_dir):
+def generate_relative_graph_among_motif_families(families, loop_list, familywise_alignment_data, familywise_rmsd_data_dict, input_fname_base, alignment_tool, alignment_dir, graphs_and_pickles_dir, partial_pdbx_dir, output_dir, rmsd_threshold, participating_motif_instance_threshold):
 
     corresponding_loop_data = {}
     for c1_id in families:
@@ -922,7 +922,7 @@ def generate_relative_graph_among_motif_families(families, loop_list, familywise
             mean_rmsd_list = []
             pair_count = 0
             total_count = 0
-            rmsd_threshold = rmsd_threshold_for_merging
+            # rmsd_threshold = rmsd_threshold_for_merging
             filtered_pair_list = []
             # participating_r1_list = []
             for (i, r1) in sorted(cluster1_pairwise_alignment_details, key=lambda x: cluster1_pairwise_alignment_details[x][0]):
@@ -1048,7 +1048,7 @@ def generate_relative_graph_among_motif_families(families, loop_list, familywise
 
         families_shortcoded[family_id_short] = copy.deepcopy(families[family_id])
 
-    draw_figure(families_shortcoded, alignment_tool, inter_family_adj_mat, participating_r1_list_dict, rmsd_threshold, output_dir)
+    draw_figure(families_shortcoded, alignment_tool, inter_family_adj_mat, participating_r1_list_dict, rmsd_threshold, participating_motif_instance_threshold, output_dir)
     # draw_figure_with_mean_rmsd(families_shortcoded, subfamilies, inter_family_adj_mat_avg)
 
 def find_subfamily(cluster_id, subfamilies, r):
@@ -1175,7 +1175,7 @@ def write_participating_motif_instances_to_file(family_id_short1, motif_list1, f
 #     return return_list
 
 # def draw_figure(families, subfamilies, inter_family_adj_mat, participating_r1_list_dict):
-def draw_figure(families, alignment_tool, inter_family_adj_mat, participating_r1_list_dict, rmsd_threshold, output_dir):
+def draw_figure(families, alignment_tool, inter_family_adj_mat, participating_r1_list_dict, rmsd_threshold, participating_motif_instance_threshold, output_dir):
     plt_fig = plt.figure(frameon = False)
     plt_fig = plt.figure()
     plt_fig.set_size_inches(9, 9)

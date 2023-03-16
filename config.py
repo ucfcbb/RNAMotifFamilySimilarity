@@ -29,7 +29,7 @@ connectivity_test_type = "percent"      # percent / count [Choose if merging or 
 # for 'count', the value would represent at least how many acceptable edges are required to merge
 connectivity_test_threshold = 80        # This value can represent percentage or fixed value based on 'connectivity_test_type'
 rmsd_threshold_for_merging = 1.0        # This is one of the thresholds which is used to identify if a given alignment is good enough.
-participating_motif_instance_threshold = 20.0
+# participating_motif_instance_threshold = 20.0
 align_len_threshold_type = 'z-score'    # z-score / length [Familywise alignment length can be defined based on zscore or a fixed length]
 align_len_zscore_threshold = 0          # z-score examples: -0.5, 0, 0.5, 1; length examples: 7, 8, 9, 10
 connectivity_direction = "both"         # both / one-way [Connectivity need to be acceptable from both CMGs or one]
