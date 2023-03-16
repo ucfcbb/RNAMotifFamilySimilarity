@@ -24,6 +24,8 @@ Note: **MacOS users** might get an error message saying `'align_ga.mac' cannot b
 ```
 usage: run.py [-h] -i I [-t [T]]
 I - <input_file_name> [Get text outputs for user input file - required]
+R - <rmsd_threshold> [RMSD threshold to consider as similar]
+P - <participating_motif_instance_threshold> [Percentage of participating motif instances threshold]
 T - <alignment_tool> [Specify alignment tool to be used, default - ScanX]
 ```
 
@@ -39,6 +41,14 @@ To generate a similarity graph along with the text files containing similar moti
 ```
 python run.py -i sample1.in -t ScanX
 ```
+
+To generate a similarity graph along with the text files containing similar motif instances from [sample1.in](data/sample1.in) using ‘ScanX’ alignment tool while setting the RMSD threshold as 2.0 and participating motif instances threshold as 10%:
+
+```
+python run.py -i sample1.in -t ScanX -r 2.0 -p 10.0
+```
+
+We provided pregenerated data for 360 internal loop motifs from 11 families. For any new dataset, it will automatically download and/or generate required data files (e.g. *.cif, *.fasta, *.aln, etc.) which might take some time. Please make sure to provide valid (not obsolete) PDB number in the input data, otherwise it might end up getting 404 error while downloading PDB and FASTA files.
 
 ### 4. Output specification
 
