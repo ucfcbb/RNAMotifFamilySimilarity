@@ -34,7 +34,7 @@ Motif Family Similarity Analysis tool takes input from any text file (e.g. ‘*.
 ### 3. Commands for usage
 
 ```
-usage: run.py [-h] -i I [-t [T]]
+usage: python3 run.py [-h] -i I [-r [R]][-p [P]][-t [T]]
 I - <input_file_name> [Input file name under the data directory (Required). e.g.: sample1.in]
 R - <rmsd_threshold> [RMSD threshold to consider as similar. e.g.: 1.0]
 P - <participating_motif_instance_threshold> [Percentage of participating motif instances threshold. e.g.: 20.0]
@@ -46,19 +46,19 @@ T - <alignment_tool> [Alignment tool to be used, default - ScanX, options: ScanX
 To generate a similarity graph along with the text files containing similar motif instances from [sample1.in](data/sample1.in) using default alignment tool (RNAMotifScanX), use the following command:
 
 ```
-python run.py -i sample1.in
+python3 run.py -i sample1.in
 ```
 
 To generate a similarity graph along with the text files containing similar motif instances from [sample1.in](data/sample1.in) using ‘RNAalign’ alignment tool, use the following command:
 
 ```
-python run.py -i sample1.in -t RNAalign
+python3 run.py -i sample1.in -t RNAalign
 ```
 
 To generate a similarity graph along with the text files containing similar motif instances from [sample1.in](data/sample1.in) using ‘ScanX’ alignment tool while setting the RMSD threshold as 2.0 and participating motif instances threshold as 10%, use the following command:
 
 ```
-python run.py -i sample1.in -t ScanX -r 2.0 -p 10.0
+python3 run.py -i sample1.in -t ScanX -r 2.0 -p 10.0
 ```
 
 We provided pre-generated data for 360 internal loop motifs from 11 families. For any new dataset, it will automatically download and/or generate required data files (e.g. *.cif, *.fasta, *.aln, etc.) which might take some time. Please make sure to provide valid (not obsolete) PDB number in the input data.
