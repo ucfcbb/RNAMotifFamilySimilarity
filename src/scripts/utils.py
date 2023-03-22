@@ -29,6 +29,11 @@ def prepare_executables():
     os.system('chmod +x ' + scanx_aln_executable_fn)
     os.chdir(root_dir)
 
+    tmalign_executable_fn = 'TMalign'
+    os.chdir(tmalign_dir)
+    os.system('chmod +x ' + tmalign_executable_fn)
+    os.chdir(root_dir)
+
 def wait_for_certain_time_according_to_wait_factor(n):
     wait_time = n * wait_factor
     wait_time = min(wait_time, max_wait_time)

@@ -30,7 +30,7 @@ def get_residue_count(d):
 def main():
 
     process_start_time = time.time()
-    parser = argparse.ArgumentParser(description='Prepare input for RNAMotifContrast')
+    parser = argparse.ArgumentParser(description='Prepare input for RNAMotifComp')
     parser.add_argument('-i', required=True, help='Input file containing motifs')
     parser.add_argument('-r', nargs='?', default=1.0, const=1.0, help='RMSD threshold to consider as similar')
     parser.add_argument('-p', nargs='?', default=20.0, const=20.0, help='Percentage of participating motif instances threshold')

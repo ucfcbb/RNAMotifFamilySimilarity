@@ -11,44 +11,57 @@
 
 ---
 
-This is a tool to generate similarity graph from RNA structural motifs using either RNAMotifScanX or RNA-align alignment tool. It is developed and tested in a **64-bit Linux** machine. Currently, this is a beta version. We will update the latest version as soon as it is ready. For the basic features, python (3.x recommended) and PyMOL are required to be installed on the computer with the previously mentioned environments. The preliminary files to run this code is included here.
+RNAMotifComp is a method to generate similarity graph from RNA structural motifs using either RNAMotifScanX or RNA-align alignment tool. It is developed and tested in a **64-bit Linux** machine. For the basic features, only python (3.x recommended) is required to be installed on the computer with **64-bit Linux** environment. The preliminary files to run this code is included here.
+
+### 1. Installation
+
+#### 1.1 Install prelimineries
+
+All recent Linux systems normally come with python installed by default. If not, please install `python` and `pip` before proceeding to the next step.
+
+#### 1.2: Install required Python libraries
+
+It is required to install several python libraries to run RNAMotifComp. These libraries are included in the [requirements.txt](requirements.txt) file. To install all required python libraries, please navigate to the RNAMotifComp home directory in the terminal and execute the following command.
+
+```
+pip install -r requirements.txt
+```
 
 ### 2. Input Specifications
 
-Motif Family Similarity Analysis tool takes input from any text file (e.g. ‘*.in’) which needs to be in the [RNAMotifFamilySimilarity/data/](data) directory or any subdirectory inside. Each line in that file represents a motif family. The motif family starts with a name, followed by a comma-separated list of motifs (the indices for motifs are expected to be in the PBD index, but it can be changed to Fasta index by setting a parameter in the configuration file). To see examples of formats, please check the sample input file ([sample1.in](data/sample1.in)) provided in the [data](data) directory.
+Motif Family Similarity Analysis tool takes input from any text file (e.g. ‘*.in’) which needs to be in the [RNAMotifFamilySimilarity/data/](data) directory or any subdirectory inside. Each line in that file represents a motif family. Each line starts with the motif family name, followed by a comma-separated list of motifs (the indices for motifs are PDB index, but FASTA index can also be used by setting a parameter in the configuration file). Please check the sample input file ([sample1.in](data/sample1.in)) provided in the [data](data) directory to look into the formatting of input data in detail.
 
 ### 3. Commands for usage
 
-Note: **MacOS users** might get an error message saying `'align_ga.mac' cannot be opened because it is from an unidentified developer`. To get rid of this error, please navigate to: 'System Preferences > Security & Privacy > General' and set 'Allow apps downloaded from' to 'Anywhere'.
-
 ```
 usage: run.py [-h] -i I [-t [T]]
-I - <input_file_name> [Get text outputs for user input file - required]
-R - <rmsd_threshold> [RMSD threshold to consider as similar]
-P - <participating_motif_instance_threshold> [Percentage of participating motif instances threshold]
-T - <alignment_tool> [Specify alignment tool to be used, default - ScanX]
+I - <input_file_name> [Input file name under the data directory (Required). e.g.: sample1.in]
+R - <rmsd_threshold> [RMSD threshold to consider as similar. e.g.: 1.0]
+P - <participating_motif_instance_threshold> [Percentage of participating motif instances threshold. e.g.: 20.0]
+T - <alignment_tool> [Alignment tool to be used, default - ScanX, options: ScanX / RNAalign]
 ```
 
-**Example:**
-To generate a similarity graph along with the text files containing similar motif instances from [sample1.in](data/sample1.in) using default alignment tool:
+**Examples:**
+
+To generate a similarity graph along with the text files containing similar motif instances from [sample1.in](data/sample1.in) using default alignment tool (RNAMotifScanX), use the following command:
 
 ```
 python run.py -i sample1.in
 ```
 
-To generate a similarity graph along with the text files containing similar motif instances from [sample1.in](data/sample1.in) using ‘ScanX’ alignment tool:
+To generate a similarity graph along with the text files containing similar motif instances from [sample1.in](data/sample1.in) using ‘RNAalign’ alignment tool, use the following command:
 
 ```
-python run.py -i sample1.in -t ScanX
+python run.py -i sample1.in -t RNAalign
 ```
 
-To generate a similarity graph along with the text files containing similar motif instances from [sample1.in](data/sample1.in) using ‘ScanX’ alignment tool while setting the RMSD threshold as 2.0 and participating motif instances threshold as 10%:
+To generate a similarity graph along with the text files containing similar motif instances from [sample1.in](data/sample1.in) using ‘ScanX’ alignment tool while setting the RMSD threshold as 2.0 and participating motif instances threshold as 10%, use the following command:
 
 ```
 python run.py -i sample1.in -t ScanX -r 2.0 -p 10.0
 ```
 
-We provided pregenerated data for 360 internal loop motifs from 11 families. For any new dataset, it will automatically download and/or generate required data files (e.g. *.cif, *.fasta, *.aln, etc.) which might take some time. Please make sure to provide valid (not obsolete) PDB number in the input data, otherwise it might end up getting 404 error while downloading PDB and FASTA files.
+We provided pre-generated data for 360 internal loop motifs from 11 families. For any new dataset, it will automatically download and/or generate required data files (e.g. *.cif, *.fasta, *.aln, etc.) which might take some time. Please make sure to provide valid (not obsolete) PDB number in the input data.
 
 ### 4. Output specification
 

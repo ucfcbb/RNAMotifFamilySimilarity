@@ -813,7 +813,9 @@ def generate_relative_graph_among_motif_families(families, loop_list, familywise
         # cluster1_id = 'Sarcin-ricin'
         # cluster1_id = 'E-loop'
         
-        cluster1_id_short = known_motif_shortcode[cluster1_id.lower()]
+        cluster1_id_short = cluster1_id
+        if cluster1_id.lower() in known_motif_shortcode:
+            cluster1_id_short = known_motif_shortcode[cluster1_id.lower()]
 
         if cluster1_id_short not in participating_r1_list_dict:
             participating_r1_list_dict[cluster1_id_short] = {}
@@ -841,7 +843,9 @@ def generate_relative_graph_among_motif_families(families, loop_list, familywise
                 # print('continueing')
                 continue
 
-            cluster2_id_short = known_motif_shortcode[cluster2_id.lower()]
+            cluster2_id_short = cluster2_id
+            if cluster2_id.lower() in known_motif_shortcode:
+                cluster2_id_short = known_motif_shortcode[cluster2_id.lower()]
 
             if cluster2_id_short not in participating_r1_list_dict[cluster1_id_short]:
                 participating_r1_list_dict[cluster1_id_short][cluster2_id_short] = []

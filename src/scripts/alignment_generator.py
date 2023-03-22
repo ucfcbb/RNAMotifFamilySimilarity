@@ -462,10 +462,12 @@ def get_alignment_files(alignment_tool, alignment_dir, families, loop_node_list_
 	# sys.exit()
 
 	if len(parameter_list) > 0:
-		if alignment_tool == 'TMalign':
-			logger.info('All required alignments not found, generating using TMalign.')
-		else:
-			logger.info('All required alignments not found, generating using ScanX.')
+		# if alignment_tool == 'TMalign':
+		# 	logger.info('All required alignments not found, generating using RNA-align.')
+		# else:
+		# 	logger.info('All required alignments not found, generating using ScanX.')
+
+		logger.info('All required alignments not found, generating using ' + str(alignment_tool) + '.')
 
 	if alignment_tool != 'TMalign':
 		os.environ['RNAMOTIFSCANX_PATH'] = motifscanx_dir
@@ -825,6 +827,21 @@ def adjust_rotated_tmalign_alignment_result_v2(loop1, loop2, aln1, aln2):
 
 def adjust_rotated_tmalign_alignment_result(loop1, loop2, aln1, aln2):
 	# this function is intended to work with Internal Loops only
+	if get_loop_type(loop1) == 'HL' and get_loop_type(loop2) == 'HL':
+		if '*' in aln1:
+			# star_ind = aln1.index('*')
+			# loop1_part1 = aln1[:star_ind]
+			# loop1_part2 = aln1[star_ind+1:]
+			# loop2_part1 = aln2[:star_ind]
+			# loop2_part2 = aln2[star_ind+1:]
+
+			# aln1 = loop1_part2 + loop1_part1
+			# aln2 = loop2_part2 + loop2_part1
+
+			return aln1, aln2
+
+	# print(aln1)
+	# print(aln2)
 	if '*' in aln1:
 		star_ind = aln1.index('*')
 		loop1_part1 = aln1[:star_ind].replace('-', '')

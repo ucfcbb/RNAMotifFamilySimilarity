@@ -98,7 +98,7 @@ def generate_pdb_chain_dict(loop_list, extend):
                     if ii not in pdb_chain_dict[pdb_id][chain_id][loop]:
                         pdb_chain_dict[pdb_id][chain_id][loop].append(ii)
 
-        add_adjacent_residue_info(pdb_id, loop, pdb_chain_adj_dict)
+        # add_adjacent_residue_info(pdb_id, loop, pdb_chain_adj_dict)
 
     return pdb_chain_dict, pdb_chain_adj_dict
 
