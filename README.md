@@ -73,4 +73,4 @@ Motif Family Similarity Analysis is developed for an NIH funded project (R01GM10
   
 ### CONTACTS
 
-The author of the source code is Md Mahfuzur Rahaman. The benchmarking using ML part is authored by Nabila Shahnaz Khan. For bug reports or comments please contact mahfuzur@knights.ucf.edu
+The author of the source code is Md Mahfuzur Rahaman. The benchmarking using ML part is authored by Nabila Shahnaz Khan. For bug reports or comments please contact mahfuz@ucf.edu.
